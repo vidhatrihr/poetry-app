@@ -21,7 +21,10 @@ def search():
   """ http://localhost:5000/search?title=... """
   title = request.args.get('title')
   data = get_json(f'https://poetrydb.org/title/{title}/author,title')
-  return render_template('search.html', title=title, data=data)
+  error = False
+  if type(data) == dict:
+    error = True
+  return render_template('search.html', title=title, data=data, error=error)
 
 
 @app.route('/titles/<author>')

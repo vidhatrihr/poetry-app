@@ -6,10 +6,16 @@
     <title>Document</title>
   </head>
   <body>
+    <a href="/">Go back</a>
+
     <h1>
       Results of your search for title:
       <span style="color: red">{{title}}</span>
     </h1>
+
+    {% if error %}
+    <p>No results found.</p>
+    {% else %}
     <ul>
       {% for author, group in data|groupby('author') %}
       <li>
@@ -24,5 +30,6 @@
       </li>
       {% endfor %}
     </ul>
+    {% endif %}
   </body>
 </html>
