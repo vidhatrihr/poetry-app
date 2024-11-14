@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>
+      Results of your search for title:
+      <span style="color: red">{{title}}</span>
+    </h1>
+    <ul>
+      {% for author, group in data|groupby('author') %}
+      <li>
+        <a href="/titles/{{author}}">{{author}}</a>
+        <ul>
+          {% for poetry in group %}
+          <li>
+            <a href="/read/{{author}}/{{poetry.title}}">{{poetry.title}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
