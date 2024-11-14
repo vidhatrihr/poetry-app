@@ -36,7 +36,8 @@ def titles(author):
 @app.route('/read/<author>/<title>')
 def read(author, title):
   data = get_json(f'https://poetrydb.org/author,title/{author}:abs;{title}:abs')
-  return render_template('read.html', author=author, title=title, poetry=data[0])
+  go_back = request.args.get('go_back', f'/titles/{author}')
+  return render_template('read.html', author=author, title=title, poetry=data[0], go_back=go_back)
 
 
 if __name__ == '__main__':

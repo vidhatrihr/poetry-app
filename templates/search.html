@@ -23,7 +23,7 @@
         <ul>
           {% for poetry in group %}
           <li>
-            <a href="/read/{{author}}/{{poetry.title}}">{{poetry.title}}</a>
+            <a href="/read/{{author}}/{{poetry.title}}?go_back=/search?title={{title}}">{{poetry.title}}</a>
           </li>
           {% endfor %}
         </ul>
